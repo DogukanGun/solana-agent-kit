@@ -98,7 +98,12 @@ import {
   SolanaDeleteHeliusWebhookTool,
   SolanaParseTransactionHeliusTool,
   SolanaGetAllAssetsByOwner,
+  SolanaVerifyTool,
 } from "./index";
+import {
+  SolanaCancelVerificationTool,
+  SolanaCheckVerificationTool,
+} from "./solana";
 
 export function createSolanaTools(solanaKit: SolanaAgentKit) {
   return [
@@ -177,5 +182,8 @@ export function createSolanaTools(solanaKit: SolanaAgentKit) {
     new SolanaHeliusWebhookTool(solanaKit),
     new SolanaGetHeliusWebhookTool(solanaKit),
     new SolanaDeleteHeliusWebhookTool(solanaKit),
+    new SolanaVerifyTool(solanaKit),
+    new SolanaCancelVerificationTool(solanaKit),
+    new SolanaCheckVerificationTool(solanaKit),
   ];
 }

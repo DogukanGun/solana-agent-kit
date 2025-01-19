@@ -97,6 +97,9 @@ import {
   withdrawFromDriftUserAccount,
   withdrawFromDriftVault,
   updateVaultDelegate,
+  checkVerificationStatus,
+  cancelVerification,
+  verifyProgram,
 } from "../tools";
 import {
   Config,
@@ -113,6 +116,7 @@ import {
   FlashCloseTradeParams,
   HeliusWebhookIdResponse,
   HeliusWebhookResponse,
+  VerificationOptions,
 } from "../types";
 
 /**
@@ -806,5 +810,34 @@ export class SolanaAgentKit {
   }
   async updateDriftVaultDelegate(vaultAddress: string, delegate: string) {
     return await updateVaultDelegate(this, vaultAddress, delegate);
+  }
+  async verifyProgram(
+    programId: string,
+    repository: string,
+    commitHash: string,
+    options?: VerificationOptions,
+  ) {
+    const processedOptions: VerificationOptions | undefined = options
+      ? {
+          libName: options.libName ?? null,
+          bpfFlag: options.bpfFlag ?? null,
+          cargoArgs: options.cargoArgs ?? null,
+          verifyProgramId: options.verifyProgramId ?? null,
+        }
+      : undefined;
+
+    return verifyProgram(
+      this,
+      programId,
+      repository,
+      commitHash,
+      processedOptions,
+    );
+  }
+  async checkVerificationStatus(programId: string) {
+    return checkVerificationStatus(programId);
+  }
+  async cancelVerification(programId: PublicKey, verifyProgramId?: PublicKey) {
+    return cancelVerification(this, programId, verifyProgramId);
   }
 }

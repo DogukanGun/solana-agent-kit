@@ -260,3 +260,35 @@ export interface PriorityFeeResponse {
     options: { priorityLevel: string };
   }>;
 }
+
+/*
+ * Solana Program Verification
+ */
+export interface VerificationOptions {
+  verifyProgramId: PublicKey | null;
+  libName: string | null;
+  bpfFlag: boolean | null;
+  cargoArgs: string[] | null;
+}
+
+export interface VerificationResponse {
+  verificationPda: string;
+  status: "success" | "error";
+  message: string;
+  jobId?: string;
+}
+
+export interface VerificationInput {
+  programId: string;
+  repository: string;
+  commitHash: string;
+  verifyProgramId?: string;
+  libName?: string;
+  bpfFlag?: boolean;
+  cargoArgs?: string[];
+}
+
+export interface CancellationInput {
+  programId: string;
+  verifyProgramId?: string;
+}

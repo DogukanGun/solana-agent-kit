@@ -4,3 +4,6 @@ export * from "./close_empty_token_accounts";
 export * from "./transfer";
 export * from "./get_balance";
 export * from "./get_balance_other";
+export * from "./cancel_verification";
+export * from "./verify_program";
+export * from "./check_verification_status";

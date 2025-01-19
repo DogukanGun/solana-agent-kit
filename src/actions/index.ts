@@ -58,6 +58,9 @@ import withdrawFromDriftAccountAction from "./drift/withdrawFromDriftAccount";
 import driftUserAccountInfoAction from "./drift/driftUserAccountInfo";
 import deriveDriftVaultAddressAction from "./drift/deriveVaultAddress";
 import updateDriftVaultDelegateAction from "./drift/updateDriftVaultDelegate";
+import solanaVerifyAction from "./solana/verifyProgram";
+import checkVerificationAction from "./solana/checkVerification";
+import cancelVerificationAction from "./solana/cancelVerification";
 
 export const ACTIONS = {
   WALLET_ADDRESS_ACTION: getWalletAddressAction,
@@ -121,6 +124,9 @@ export const ACTIONS = {
   DRIFT_USER_ACCOUNT_INFO_ACTION: driftUserAccountInfoAction,
   DERIVE_DRIFT_VAULT_ADDRESS_ACTION: deriveDriftVaultAddressAction,
   UPDATE_DRIFT_VAULT_DELEGATE_ACTION: updateDriftVaultDelegateAction,
+  SOLANA_PROGRAM_VERIFY_ACTION: solanaVerifyAction,
+  SOLANA_CHECK_VERIFICATION_ACTION: checkVerificationAction,
+  SOLANA_CANCEL_VERIFICATION_ACTION: cancelVerificationAction,
 };
 
 export type { Action, ActionExample, Handler } from "../types/action";
